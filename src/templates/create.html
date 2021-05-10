@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+</head>
+<body>
+<div class="d-flex justify-content-center">
+    <div class="card w-50">
+        <div class="card-body">
+            <h1>Crear Usuario</h1>
+            <div class="col">
+                <div class="col">
+                    <form method="POST" action="/users/store">
+                        <div class="form-group">
+                            <label>Tipo Documento</label>
+                            <select class="form-control" type="text" id="typeOfIdentification" name="cc" required>
+                                <option value="TI">T.I</option>
+                                <option value="CC">C.C</option>
+                                <option value="Pasaporte">Pasaporte</option>
+                                <option value="Carnet de Extranjeria">Carnet de Extranjeria</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Num. Documento</label>
+                            <input class="form-control" type="text" id="identification_num" name="idNum" required onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input class="form-control" type="text" id="name" name="name" required onkeypress="return (event.charCode >=65 && event.charCode <=90 || event.charCode >=97 && event.charCode <=122 || event.charCode >=32)">
+                        </div>
+                        <div class="form-group">
+                            <label>Correo electronico</label>
+                            <input class="form-control" type="email" id="email" name="email" required required onkeypress="return (event.charCode >= 48 && event.charCode <= 57 || event.charCode >=65 && event.charCode <=90 || event.charCode >=97 && event.charCode <=122 || event.charCode ==64 || event.charCode ==46 )">
+                        </div>
+                        <div class="form-group">
+                            <label>Ficha</label>
+                            <select class="form-control" type="text" id="id_record_num" name="id_record_num" required>
+                                <option value="1">2061250</option>
+                                <option value="2">2061277</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Programa</label>
+                            <select class="form-control" type="text" id="id_training_program" name="id_training_program" required>
+                                <option value="1">ADSI</option>
+                                <option value="2">Multimedia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Centro</label>
+                            <select class="form-control" type="text" id="id_training_center" name="id_training_center" required>
+                               <option value="1">CTGI</option>
+                            </select>
+                        </div>
+    
+                        <div class="form-group">
+                            <label>Contraseña</label>
+                            <input class="form-control" type="password" id="password" name="password" onkeypress="return (event.charCode >= 48 && event.charCode <= 57 || event.charCode >=65 && event.charCode <=90 || event.charCode >=97 && event.charCode <=122)">
+                        </div>
+                        <button type="submit" class="btn btn-primary">REGISTRAR</button><br><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</body>
+</html>

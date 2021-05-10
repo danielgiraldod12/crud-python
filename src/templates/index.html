@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <div class="card mb-2">
+        <div class="card-title">
+            <h1 class="text-center">Tabla Usuarios</h1>
+        </div>
+        <div class="card-body">
+            <a href="/users/create" class="btn btn-success">Crear Usuario</a>
+            <a href="/asists" class="btn btn-primary">Ir a asistencias</a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="usuarios">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Tipo Identificacion</th>
+                                <th scope="col">Num. Identificacion</th>
+                                <th scope="col">Ficha</th>
+                                <th scope="col">Programa</th>
+                                <th scope="col">Centro</th>
+                                <th scope="col">Acciones: </th>
+                            </tr>
+                        </thead>
+                            <tbody>
+                                {% for user in users %}
+                                <tr>
+
+                                    
+                                    <td>{{user.id}}</td>
+                                    <td>{{user.name}}</td>
+                                    <td>{{user.email}}</td>
+                                    <td>{{user.cc}}</td>
+                                    <td>{{user.idNum}}</td>
+                                    {% if user.id_record_num == 1%}
+                                    <td>2061250</td>
+                                    {% else %}
+                                    <td>2061277</td>
+                                    {% endif %}
+
+                                    {% if user.id_training_program == 1%}
+                                    <td>ADSI</td>
+                                    {% else %}
+                                    <td>Multimedia</td>
+                                    {% endif %}
+                                    <td>CTGI</td>
+                                    <td>
+                                        <a href="/users/edit/{{user.id}}" class="btn btn-primary">Editar</a>
+                                        <a href="/users/delete/{{user.id}}" class="btn btn-danger">Eliminar</a>
+                                        <a href="/asists/create/{{user.id}}" class="btn btn-info">Tomar asistencia</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#usuarios').DataTable();
+        } );
+    </script>
+</body>
+</html>
